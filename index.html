@@ -10,9 +10,9 @@
       height: 100%;
       margin: 0;
       overflow: hidden;
-      background: #000;
+      background: #ffffff;
       font-family: Arial, sans-serif;
-      color: #fff;
+      color: #000000;
     }
 
     #ui {
@@ -24,31 +24,42 @@
       text-align: center;
     }
 
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
     button {
       padding: 15px 30px;
       font-size: 20px;
       border-radius: 10px;
       border: none;
-      background: yellow;
+      background: black;
+      color: white;
       cursor: pointer;
-      margin-top: 16px;
+      margin-top: 20px;
+      transition: 0.2s ease;
     }
 
-    /* Fullscreen video container */
+    button:hover {
+      opacity: 0.8;
+    }
+
+    /* Fullscreen Video wrapper (now white) */
     #videoWrap {
       display: none;
       position: fixed;
       inset: 0;
-      background: #000;
+      background: #ffffff;
     }
 
-    /* Video fills wrapper but DOES NOT crop */
+    /* Video (contain = no crop) + white bars instead of black */
     #dogVideo {
       width: 100%;
       height: 100%;
-      object-fit: contain;   /* no cropping */
+      object-fit: contain;
       object-position: center;
-      background: #000;
+      background: #ffffff;
     }
   </style>
 </head>
