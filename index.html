@@ -1,57 +1,79 @@
-<!-- redeploy -->
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ready?</title>
-<style>
-body {
-  margin:0;
-  background:black;
-  color:white;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-  flex-direction:column;
-  text-align:center;
-  font-family:Arial;
-}
-button{
-  padding:15px 30px;
-  font-size:20px;
-  border-radius:10px;
-  border:none;
-  background:yellow;
-  cursor:pointer;
-}
-video{
-  display:none;
-  width:100vw;
-  height:100vh;
-  object-fit: contain;   /* show full video */
-  background: #000;      /* adds black bars if needed */
-}
-</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ready?</title>
+
+  <style>
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: #000;
+      font-family: Arial, sans-serif;
+      color: #fff;
+    }
+
+    #ui {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 20px;
+      border-radius: 10px;
+      border: none;
+      background: yellow;
+      cursor: pointer;
+      margin-top: 16px;
+    }
+
+    /* Fullscreen video container */
+    #videoWrap {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #000;
+    }
+
+    /* Video fills wrapper but DOES NOT crop */
+    #dogVideo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;   /* no cropping */
+      object-position: center;
+      background: #000;
+    }
+  </style>
 </head>
+
 <body>
+  <div id="ui">
+    <h1>Ready to get dogged?</h1>
+    <button onclick="playVideo()">Yes</button>
+  </div>
 
-<h1>Ready to get dogged?</h1>
-<button onclick="playVid()">Yes</button>
+  <div id="videoWrap">
+    <video id="dogVideo" playsinline controls>
+      <source src="wenomechainsama.mp4" type="video/mp4">
+    </video>
+  </div>
 
-<video id="dogVid" playsinline>
-  <source src="wenomechainsama.mp4" type="video/mp4">
-</video>
+  <script>
+    function playVideo() {
+      document.getElementById("ui").style.display = "none";
+      document.getElementById("videoWrap").style.display = "block";
 
-<script>
-function playVid(){
-  document.querySelector("h1").style.display="none";
-  document.querySelector("button").style.display="none";
-  const v = document.getElementById("dogVid");
-  v.style.display="block";
-  v.play();
-}
-</script>
-
+      const video = document.getElementById("dogVideo");
+      video.currentTime = 0;
+      video.play();
+    }
+  </script>
 </body>
 </html>
